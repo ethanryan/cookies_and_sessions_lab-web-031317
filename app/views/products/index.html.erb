@@ -1,0 +1,19 @@
+<h1>Welcome to this supercool online store.</h1>
+
+<p>Strings for Sale! Type in whatever item you want to buy.
+  Literally anything. You want infinity? Type it in.</p>
+
+<%= form_tag add_product_path do %>
+<!-- using form_tag instead of form_for because there is no model  -->
+   <%= label_tag :product %>
+   <%= text_field_tag :product %>
+   <%= submit_tag "add to cart" %>
+   <!-- above "add to cart" needs to be lowercase :(  -->
+   <% end %>
+
+<br><br>
+
+<p>Shopping Cart:</p>
+<%= @cart.each do |item| %>
+<%= item %>
+<% end %>

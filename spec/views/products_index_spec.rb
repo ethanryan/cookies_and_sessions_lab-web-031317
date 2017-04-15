@@ -1,3 +1,7 @@
+###commenting out this spec, via classmate's and TA's suggestion:
+
+##uncommented after seeing how classmates solved this lab
+
 require 'rails_helper'
 
 RSpec.describe "products/index", :type => :view do

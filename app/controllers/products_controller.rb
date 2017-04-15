@@ -1,26 +1,25 @@
-class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+class ProductsController < ApplicationController
 
-  def cart
-    session[:cart] ||= [] #returning the cart, or an empty array if nothing's in the cart
+  def index
+    @cart = cart
+    #@cart instance variable on the left
+    #is being assigned the return value of
+    #our cart method within application_controller on the right,
+    #which will be either an empty array or an array full of strings
   end
 
-  #using the session method in #cart controller action above
+  def add #each string is a product
+    cart << product_params #product_params are set in private method below
+    redirect_to :products
+  end
 
-  #via lesson:
+  private
 
-  # Rails manages all session data in a single cookie,
-  # named _YOUR_RAILS_APP_NAME_session.
-  # It serializes all the key/value pairs you set with session,
-  # converting them from a Ruby object into a big string.
-  # Whenever you set a key with the session method,
-  # Rails updates the value of its session cookie
-  # to this big string.
+  def product_params
+    params.require(:product)
+  end
 
-end #end class
-
+end #end of class
 
 # INTRODUCTION
 
